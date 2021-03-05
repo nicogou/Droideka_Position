@@ -15,6 +15,7 @@ public:
     Droideka_Position(float position[LEG_NB][3]);
     void copy_position(Droideka_Position pos);
     void print_position();
+    void print_position(String str);
 };
 
 #endif

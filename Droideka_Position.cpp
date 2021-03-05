@@ -63,3 +63,9 @@ void Droideka_Position::print_position()
     }
     Serial.println("Valid position: " + String(valid_position));
 }
+
+void Droideka_Position::print_position(String str)
+{
+    Serial.println(str);
+    print_position();
+}
