@@ -16,6 +16,22 @@ public:
     void copy_position(Droideka_Position pos);
     void print_position();
     void print_position(String str);
+
+    int operator==(Droideka_Position d_p2)
+    {
+        bool res = true;
+        for (int ii = 0; ii < LEG_NB; ii++)
+        {
+            for (int jj = 0; jj < 3; jj++)
+            {
+                if (d_p2.legs[ii][jj] != legs[ii][jj])
+                {
+                    res = false;
+                }
+            }
+        }
+        return res;
+    }
 };
 
 #endif
