@@ -26,13 +26,13 @@ public:
             {
                 if (fabs(d_p2.legs[ii][jj] - legs[ii][jj]) >= 0.01f)
                 {
-                    Serial.print(ii);
-                    Serial.print("\t");
-                    Serial.print(jj);
-                    Serial.print("\t");
-                    Serial.print(d_p2.legs[ii][jj]);
-                    Serial.print("\t");
-                    Serial.println(legs[ii][jj]);
+                    // Serial.print(ii);
+                    // Serial.print("\t");
+                    // Serial.print(jj);
+                    // Serial.print("\t");
+                    // Serial.print(d_p2.legs[ii][jj]);
+                    // Serial.print("\t");
+                    // Serial.println(legs[ii][jj]);
                     res = false;
                 }
             }
