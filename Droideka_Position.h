@@ -16,6 +16,8 @@ public:
     void copy_position(Droideka_Position pos);
     void print_position();
     void print_position(String str);
+    Droideka_Position &move_leg(int id, float trans_x, float trans_y, float trans_z);
+    Droideka_Position &move_leg_polar(int id, float theta, float rho, float trans_z);
 
     int operator==(Droideka_Position d_p2)
     {
