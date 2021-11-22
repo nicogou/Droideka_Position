@@ -2,11 +2,19 @@
 
 Droideka_Position::Droideka_Position()
 {
+    /* Class initializer. valid_position is false as no actual position was specified.
+     */
     valid_position = false;
 }
 
 Droideka_Position::Droideka_Position(float position[LEG_NB][3])
 {
+    /* Class initializer.
+     *
+     * position : the legs position.
+     * LEG_NB : id 0 is the front left leg, id 1 is the front right leg, id 2 is the rear left leg, id 3 is the rear right leg.
+     * For each leg, id 0 stores the shoulder angle in degrees, id 1 and id 2 store resp. the x and y coordinates with respect to the leg frame.
+     */
     for (int ii = 0; ii < LEG_NB; ii++)
     {
         if (position[ii][1] * position[ii][1] + position[ii][2] * position[ii][2] > (HIP_LENGTH + TIBIA_LENGTH) * (HIP_LENGTH + TIBIA_LENGTH))
@@ -31,6 +39,10 @@ Droideka_Position::Droideka_Position(float position[LEG_NB][3])
 
 void Droideka_Position::copy_position(Droideka_Position position)
 {
+    /* copies Droideka_position position into current instance.
+     *
+     * position : the position to be copied.
+     */
     for (int ii = 0; ii < LEG_NB; ii++)
     {
         if (position.legs[ii][1] * position.legs[ii][1] + position.legs[ii][2] * position.legs[ii][2] > (HIP_LENGTH + TIBIA_LENGTH) * (HIP_LENGTH + TIBIA_LENGTH))
@@ -51,6 +63,10 @@ void Droideka_Position::copy_position(Droideka_Position position)
 
 void Droideka_Position::print_position()
 {
+    /* Prints position
+     *
+     * Displays info so that it is somewhat readable.
+     */
     for (int ii = 0; ii < LEG_NB; ii++)
     {
         Serial.print("Leg n°" + String(ii) + " : ");
@@ -66,12 +82,23 @@ void Droideka_Position::print_position()
 
 void Droideka_Position::print_position(String str)
 {
+    /* Prints str then prints position.
+     *
+     * Displays info so that it is somewhat readable.
+     */
     Serial.println(str);
     print_position();
 }
 
 Droideka_Position &Droideka_Position::move_leg(int id, float trans_x, float trans_y, float trans_z)
 {
+    /* Modifies a Droideka_Position instance with a foot displacement of (trans_x, trans_y, trans_z) in cartesian coordinates.
+     *
+     * id : leg id to move.
+     * trans_x : longitudinal foot displacement
+     * trans_y : lateral foot disp
+     * trans_z : vertical foot displacement
+     */
     if (id == 0)
     {
         trans_x = -trans_x;
@@ -113,6 +140,13 @@ Droideka_Position &Droideka_Position::move_leg(int id, float trans_x, float tran
 
 Droideka_Position &Droideka_Position::move_leg_polar(int id, float theta, float rho, float trans_z)
 {
+    /* Modifies a Droideka_Position instance with a foot displacement of (theta, rho, trans_z) in polar coordinates.
+     *r
+     * id : leg id to move.
+     * theta : leg angle (added to starting position)
+     * rho : replaces the previous value /!\ This is a replacement, not an addition.
+     * trans_z : vertical foot displacement
+     */
     if (id == 0 || id == 3)
     {
         theta = -theta;
